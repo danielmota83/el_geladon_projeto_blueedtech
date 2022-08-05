@@ -1,34 +1,46 @@
 import './NavBar.css';
 import sacola from 'assets/icons/sacola.svg';
+import add from 'assets/icons/add.svg';
 import logo from 'assets/logo.svg';
 
-
-function NavBar(){
-    return(
-        <div className="Home__header Header">
-        <div className="row">
-          <div className="Header__logo Logo">
+function NavBar({ createPaleta }) {
+  return (
+    <div className="Home__header Header">
+      <div className="row">
+        <div className="Header__logo Logo">
+          <img
+            src={logo}
+            width="70px"
+            alt="Logo El Geladon"
+            className="Logo__icone"
+          />
+          <span className="Logo__titulo"> El Geladon </span>
+        </div>
+        <div className="Header__opcoes Opcoes">
+          <button
+            type="button"
+            className="Opcoes__paleta Paleta"
+            onClick={() => createPaleta()}
+          >
             <img
-              src={logo}
-              width="70px"
-              alt="Logo El Geladon"
-              className="Logo__icone"
+              src={add}
+              width="40px"
+              className="Paleta__icone"
+              alt="Adicionar Paleta"
             />
-            <span className="Logo__titulo"> El Geladon </span>
-          </div>
-          <div className="Header__opcoes Opcoes">
-            <div className="Opcoes__sacola Sacola">
-              <img
-                src={sacola}
-                width="40px"
-                className="Sacola__icone"
-                alt="Sacola de compras"
-              />
-            </div>
+          </button>
+          <div className="Opcoes__sacola Sacola">
+            <img
+              src={sacola}
+              width="40px"
+              className="Sacola__icone"
+              alt="Sacola de compras"
+            />
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
-export default NavBar
+export default NavBar;
