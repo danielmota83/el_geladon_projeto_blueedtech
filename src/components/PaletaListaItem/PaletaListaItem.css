@@ -32,7 +32,7 @@
   }
   
   .PaletaListaItem__preco {
-    color: darkviolet;
+    color: rgb(152, 139, 0);
   }
   
   .Acoes {
@@ -43,7 +43,7 @@
   .Acoes__adicionar,
   .Acoes__remover {
     border: none;
-    color: white;
+    color: black;
     border-radius: 5px;
     font-family: "Exo", sans-serif;
     padding: 5px;
@@ -60,7 +60,7 @@
   }
   
   .Acoes__adicionar {
-    background-color: darkviolet;
+    background-color: rgb(232, 232, 1);
   }
   
   .Acoes__adicionar--preencher {

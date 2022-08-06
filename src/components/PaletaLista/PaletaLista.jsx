@@ -45,6 +45,7 @@ function PaletaLista({ paletaCriada }) {
 
 useEffect(() => {
     if (paletaCriada) adicionaPaletaNaLista(paletaCriada);
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [paletaCriada]);
 
   return (
