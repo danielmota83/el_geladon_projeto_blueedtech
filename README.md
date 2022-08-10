@@ -1,3 +1,7 @@
+BlueEdTech full stack course project Front end react 
+
+ El Geladon ice cream menu
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
