@@ -5,7 +5,6 @@ import './PaletaLista.css';
 import PaletaDetalhesModal from 'components/PaletaDetalhesModal/PaletaDetalhesModal';
 
 function PaletaLista({ paletaCriada }) {
-
   const [paletas, setPaletas] = useState([]);
 
   const [paletaSelecionada, setPaletaSelecionada] = useState({});
@@ -26,44 +25,50 @@ function PaletaLista({ paletaCriada }) {
     setPaletaSelecionada({ ...paletaSelecionada, ...paleta });
   };
 
-  const getLista = async () =>{
+  const getLista = async () => {
     const response = await PaletaService.getLista();
     setPaletas(response);
-  }
+  };
 
-  const getPaletaById = async (paletaId) =>{
+  const getPaletaById = async (paletaId) => {
     const response = await PaletaService.getById(paletaId);
     setPaletaModal(response);
-  }
+  };
 
-  useEffect(() =>{getLista()},[]);
+  useEffect(() => {
+    getLista();
+  }, []);
 
   const adicionaPaletaNaLista = (paleta) => {
     const lista = [...paletas, paleta];
     setPaletas(lista);
-};
+  };
 
-useEffect(() => {
+  useEffect(() => {
     if (paletaCriada) adicionaPaletaNaLista(paletaCriada);
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [paletaCriada]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paletaCriada]);
 
   return (
     <div className="PaletaLista">
-    {
-  paletas.map((paleta, index) => (
-    <PaletaListaItem
-      key={`PaletaListaItem-${index}`}
-      paleta={paleta}
-      quantidadeSelecionada={paletaSelecionada[index]}
-      index={index}
-      onAdd={(index) => adicionarItem(index)}
-      onRemove={(index) => removerItem(index)}
-      clickItem={(paletaId) => getPaletaById(paletaId)}
-    />
-  ))
-}
-      {paletaModal && <PaletaDetalhesModal paleta = {paletaModal} closeModal = {() => setPaletaModal (false)} />};
+      {paletas.map((paleta, index) => (
+        <PaletaListaItem
+          key={`PaletaListaItem-${index}`}
+          paleta={paleta}
+          quantidadeSelecionada={paletaSelecionada[index]}
+          index={index}
+          onAdd={(index) => adicionarItem(index)}
+          onRemove={(index) => removerItem(index)}
+          clickItem={(paletaId) => getPaletaById(paletaId)}
+        />
+      ))}
+      {paletaModal && (
+        <PaletaDetalhesModal
+          paleta={paletaModal}
+          closeModal={() => setPaletaModal(false)}
+        />
+      )}
+      ;
     </div>
   );
 }

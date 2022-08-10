@@ -1,4 +1,4 @@
-import "./PaletaListaItem.css";
+import './PaletaListaItem.css';
 
 function PaletaListaItem({
   paleta,
@@ -31,12 +31,21 @@ function PaletaListaItem({
       {badgeCounter(quantidadeSelecionada, index)}
       <div>
         <div className="PaletaListaItem__titulo"> {paleta.titulo} </div>
-        <div className="PaletaListaItem__preco"> R$ {paleta.preco.toFixed(2)} </div>
+        <div className="PaletaListaItem__preco">
+          {' '}
+          R$ {paleta.preco.toFixed(2)}{' '}
+        </div>
         <div className="PaletaListaItem__descricao"> {paleta.descricao} </div>
         <div className="PaletaListaItem__acoes Acoes">
           <button
-            className={`Acoes__adicionar ${ !quantidadeSelecionada && "Acoes__adicionar--preencher" }`}
-            onClick={(e) => { e.stopPropagation(); onAdd(index); }} >
+            className={`Acoes__adicionar ${
+              !quantidadeSelecionada && 'Acoes__adicionar--preencher'
+            }`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onAdd(index);
+            }}
+          >
             adicionar
           </button>
           {removeButton(quantidadeSelecionada, index)}
