@@ -27,13 +27,13 @@
     text-transform: uppercase;
     cursor: pointer;
     width: 48%;
-    color: white;
+    color: black;
   }
   
   .DeletaPaletaModal__confirmar {
-    background-color: darkviolet;
+    background-color: rgb(234, 249, 18);
   }
   
   .DeletaPaletaModal__cancelar {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.87);
   }

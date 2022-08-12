@@ -25,6 +25,18 @@ function NavBar({ createPaleta, updatePaleta, mode, deletePaleta, openBag }) {
         <div className="Header__opcoes Opcoes">
         <button
             type="button"
+            className="Opcoes__paleta Paleta"
+            onClick={() => createPaleta()}
+          >
+            <img
+              src={add}
+              width="30px"
+              className="Paleta__icone"
+              alt="Adicionar Paleta"
+            />
+          </button>
+        <button
+            type="button"
             className={`Opcoes__paleta Paleta ${
               mode === ActionMode.ATUALIZAR && "Paleta--ativa"
             }`}
@@ -32,8 +44,8 @@ function NavBar({ createPaleta, updatePaleta, mode, deletePaleta, openBag }) {
           >
             <img
               src={atualizar}
-              width="40px"
-              className="Paleta__icone"
+              width="30px"
+               className="Paleta__icone"
               alt="Editar paleta"
             />
           </button>
@@ -43,26 +55,15 @@ function NavBar({ createPaleta, updatePaleta, mode, deletePaleta, openBag }) {
   className={`Opcoes__paleta Paleta ${mode === ActionMode.DELETAR && 'Paleta--deletar'}`}
   onClick={() => deletePaleta()}>
 
-  <img src={deletar} width="40px" className="Paleta__icone" alt="Deletar paleta" />
+  <img src={deletar} width="30px" className="Paleta__icone" alt="Deletar paleta" />
 
 </button>
 
-          <button
-            type="button"
-            className="Opcoes__paleta Paleta"
-            onClick={() => createPaleta()}
-          >
-            <img
-              src={add}
-              width="40px"
-              className="Paleta__icone"
-              alt="Adicionar Paleta"
-            />
-          </button>
+          
           <div className="Opcoes__sacola Sacola" onClick={openBag}>
             <img
               src={sacola}
-              width="40px"
+              width="30px"
               className="Sacola__icone"
               alt="Sacola de compras"
             />

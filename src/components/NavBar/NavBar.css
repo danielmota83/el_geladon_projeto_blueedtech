@@ -4,11 +4,16 @@
   position: relative;
 }
 
+.Header__opcoes{
+  gap: 0.8rem;
+}
+
 .row {
   display: flex;
   width: 100%;
+  align-items: center;
   justify-content: space-between;
-  margin: 20px 0 35px 0;
+   margin: 20px 0 35px 0;
 }
 
 .Logo {
@@ -26,6 +31,8 @@
   font-family: 'Exo';
   font-weight: 700;
   font-size: 2.5em;
+  color: yellow;
+  text-shadow: 0.05em 0.08em 0.05em #333;
 }
 
 .Logo__icone {
@@ -40,7 +47,7 @@
 
 .Sacola__icone {
   cursor: pointer;
-}
+  }
 
 .Sacola__badge {
   background-color: red;
@@ -109,6 +116,7 @@
 .Paleta__icone {
   cursor: pointer;
   transform: translateY(3px);
+  
 }
 
 .Paleta--ativa {
