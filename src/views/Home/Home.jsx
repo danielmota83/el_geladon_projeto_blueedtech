@@ -5,8 +5,8 @@ import AdicionaPaletaModal from 'components/AdicionaEditaPaletaModal/AdicionaPal
 import { useState } from 'react';
 import { ActionMode } from 'constants/index';
 import DeletaPaletaModal from 'components/DeletaPaletaModal/DeletaPaletaModal';
-import SacolaModal from "components/SacolaModal/SacolaModal";
-import { SacolaService } from "services/SacolaService";
+import SacolaModal from 'components/SacolaModal/SacolaModal';
+import { SacolaService } from 'services/SacolaService';
 
 function Home() {
   const [canShowAdicionaPaletaModal, setCanShowAdicionaPaletaModal] =
@@ -24,12 +24,12 @@ function Home() {
 
   const abrirSacola = async () => {
     const lista = JSON.parse(localStorage.getItem('sacola'));
-    const sacola = lista.filter(i => i.quantidade > 0);
-  
-    await SacolaService.create(sacola)
-  
-    setCanOpenBag(true)
-  }
+    const sacola = lista.filter((i) => i.quantidade > 0);
+
+    await SacolaService.create(sacola);
+
+    setCanOpenBag(true);
+  };
 
   const [paletaEditada, setPaletaEditada] = useState();
 
@@ -91,10 +91,7 @@ function Home() {
             onDeletePaleta={(paleta) => setPaletaRemovida(paleta)}
           />
         )}
-        {
-  canOpenBag &&
-  <SacolaModal closeModal={() => setCanOpenBag(false)} />
-}
+        {canOpenBag && <SacolaModal closeModal={() => setCanOpenBag(false)} />}
       </div>
     </div>
   );

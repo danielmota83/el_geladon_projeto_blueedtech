@@ -2,16 +2,22 @@ import './AdicionaPaletaModal.css';
 import { useState, useEffect } from 'react';
 import Modal from 'components/Modal/Modal';
 import { PaletaService } from 'services/PaletaService';
-import { ActionMode } from "constants/index";
+import { ActionMode } from 'constants/index';
 
-function AdicionaPaletaModal({ closeModal, onCreatePaleta, mode, paletaToUpdate, onUpdatePaleta }) {
+function AdicionaPaletaModal({
+  closeModal,
+  onCreatePaleta,
+  mode,
+  paletaToUpdate,
+  onUpdatePaleta,
+}) {
   const form = {
     preco: paletaToUpdate?.preco ?? '',
     sabor: paletaToUpdate?.sabor ?? '',
     recheio: paletaToUpdate?.recheio ?? '',
     descricao: paletaToUpdate?.descricao ?? '',
     foto: paletaToUpdate?.foto ?? '',
-  }
+  };
 
   const [state, setState] = useState(form);
   const [canDisable, setCanDisable] = useState(true);
@@ -21,7 +27,7 @@ function AdicionaPaletaModal({ closeModal, onCreatePaleta, mode, paletaToUpdate,
       state.descricao.length &&
         state.foto.length &&
         state.sabor.length &&
-        String(state.preco).length
+        String(state.preco).length,
     );
 
     setCanDisable(response);
@@ -52,15 +58,16 @@ function AdicionaPaletaModal({ closeModal, onCreatePaleta, mode, paletaToUpdate,
 
     const serviceCall = {
       [ActionMode.NORMAL]: () => PaletaService.create(paleta),
-      [ActionMode.ATUALIZAR]: () => PaletaService.updtateById(paletaToUpdate?.id, paleta),
-    }
+      [ActionMode.ATUALIZAR]: () =>
+        PaletaService.updtateById(paletaToUpdate?.id, paleta),
+    };
 
     const response = await serviceCall[mode]();
 
     const actionResponse = {
       [ActionMode.NORMAL]: () => onCreatePaleta(response),
       [ActionMode.ATUALIZAR]: () => onUpdatePaleta(response),
-    }
+    };
 
     actionResponse[mode]();
 
@@ -70,7 +77,7 @@ function AdicionaPaletaModal({ closeModal, onCreatePaleta, mode, paletaToUpdate,
       recheio: '',
       descricao: '',
       foto: '',
-    }
+    };
 
     setState(reset);
 
@@ -81,7 +88,11 @@ function AdicionaPaletaModal({ closeModal, onCreatePaleta, mode, paletaToUpdate,
     <Modal closeModal={closeModal}>
       <div className="AdicionaPaletaModal">
         <form autocomplete="off">
-          <h2> { ActionMode.ATUALIZAR === mode ? 'Atualizar' : 'Adicionar ao' } Cardápio </h2>
+          <h2>
+            {' '}
+            {ActionMode.ATUALIZAR === mode ? 'Atualizar' : 'Adicionar ao'}{' '}
+            Cardápio{' '}
+          </h2>
           <div>
             <label className="AdicionaPaletaModal__text" htmlFor="preco">
               {' '}
@@ -149,7 +160,6 @@ function AdicionaPaletaModal({ closeModal, onCreatePaleta, mode, paletaToUpdate,
               id="foto"
               type="file"
               accept="image/png, image/gif, image/jpeg"
-              
               required
               onChange={(e) => handleChange(e, 'foto')}
             />
@@ -159,8 +169,9 @@ function AdicionaPaletaModal({ closeModal, onCreatePaleta, mode, paletaToUpdate,
             className="AdicionaPaletaModal__enviar"
             type="button"
             disabled={canDisable}
-            onClick={handleSend} >
-              { ActionMode.NORMAL === mode ? 'Enviar' : 'Atualizar' }
+            onClick={handleSend}
+          >
+            {ActionMode.NORMAL === mode ? 'Enviar' : 'Atualizar'}
           </button>
         </form>
       </div>

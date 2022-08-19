@@ -13,7 +13,7 @@ const SacolaContext = {
   getSacola: () => `${PaletaContext.paletaEndpoint()}/all-carrinho`,
   createSacola: () => `${PaletaContext.paletaEndpoint()}/create-carrinho`,
   purchase: () => `${PaletaContext.paletaEndpoint()}/finish-carrinho`,
-}
+};
 
 export const Api = {
   baseUrl: 'https://api-elgeladon.herokuapp.com',
